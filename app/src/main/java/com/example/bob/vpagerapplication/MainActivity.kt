@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity() {
     private fun configureViewPager() {
 
         val pager: ViewPager =  activity_main_viewpager // findVieById no more needed !!! Thanks to synthetic.main...
+
+        // Vertical one ...
+        // @see http://tomazwang.logdown.com/posts/1062498/android-vertical-viewpager-and-tabs
         pager.adapter = PageAdapter(supportFragmentManager,resources.getIntArray(R.array.colorPagesViewPager))
     }
 }
