@@ -6,6 +6,9 @@ import android.support.v4.view.ViewPager
 import com.example.bob.vpagerapplication.adapters.PageAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * @see https://guides.codepath.com/android/viewpager-with-fragmentpageradapter
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
