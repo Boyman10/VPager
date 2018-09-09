@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import com.example.bob.vpagerapplication.R;
 
-import org.w3c.dom.Text;
-
 /**
  * A simple {@link Fragment} subclass.
  */
