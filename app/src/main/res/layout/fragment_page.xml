@@ -1,20 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_page_root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.PageFragment"
     android:layout_gravity="center"
-    android:id="@+id/fragment_page_root_view">
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    tools:context=".fragments.PageFragment">
 
     <TextView
         android:id="@+id/frg_page_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dip"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorAccent"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:textColor="@color/colorAccent"
-        />
+        android:textAlignment="center"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:weightSum="2">
+
+
+        <ImageButton
+            android:id="@+id/plus_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_baseline_settings_input_composite_24px" />
+
+        <ImageButton
+            android:id="@+id/historic_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_historic" />
+
+
+    </LinearLayout>
 </LinearLayout>
