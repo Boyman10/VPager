@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="icons">
+        <item>@drawable/happy</item>
+        <item>@drawable/sad</item>
+        <item>@drawable/crazy</item>
+        <item>@drawable/angry</item>
+    </array>
+
+</resources>
