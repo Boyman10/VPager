@@ -1,11 +1,13 @@
 package com.example.bob.vpagerapplication.fragments;
 
-
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ public class PageFragment extends Fragment {
     // Keys for our bundle
     private static final String KEY_POSITION = "position";
     private static final String KEY_COLOR = "color";
+    private static final String KEY_EMO = "emo";
 
     public PageFragment() {
         // Required empty public constructor
@@ -31,7 +34,7 @@ public class PageFragment extends Fragment {
      * @param color
      * @return
      */
-    public static PageFragment newInstance(int position, int color) {
+    public static PageFragment newInstance(int position, int color, byte[] emo) {
 
         // Create a new instance
         PageFragment frag = new PageFragment();
@@ -40,6 +43,7 @@ public class PageFragment extends Fragment {
         Bundle args = new Bundle();
         args.putInt(KEY_POSITION, position);
         args.putInt(KEY_COLOR, color);
+        args.putByteArray(KEY_EMO, emo);
         frag.setArguments(args);
 
         return frag;
@@ -55,15 +59,20 @@ public class PageFragment extends Fragment {
         // get widgets from layout and serialize it
         LinearLayout rootView = (LinearLayout) view.findViewById(R.id.fragment_page_root_view);
         TextView textView = (TextView) view.findViewById(R.id.frg_page_title);
+        ImageView emoView = (ImageView) view.findViewById(R.id.frg_emo);
 
         // retrieve data from bundle
         int position = getArguments().getInt(KEY_POSITION,-1);
         int color = getArguments().getInt(KEY_COLOR,-1);
+        byte[] emo = getArguments().getByteArray(KEY_EMO);
 
         // Update widget:
         rootView.setBackgroundColor(color);
         textView.setText("Page number " + position);
 
+        Bitmap bmp = BitmapFactory.decodeByteArray(emo, 0, emo.length);
+
+        emoView.setImageBitmap(bmp);
         return view;
     }
 

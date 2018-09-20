@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
 
         // Vertical one ...
         // @see http://tomazwang.logdown.com/posts/1062498/android-vertical-viewpager-and-tabs
-        pager.adapter = PageAdapter(supportFragmentManager,resources.getIntArray(R.array.colorPagesViewPager))
+        pager.adapter = PageAdapter(supportFragmentManager,
+                resources.getIntArray(R.array.colorPagesViewPager),
+                resources.obtainTypedArray(R.array.icons))
+               // resources.getIntArray(R.array.icons))
     }
 }

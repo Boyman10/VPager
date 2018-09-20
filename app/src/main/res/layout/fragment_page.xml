@@ -9,6 +9,14 @@
     android:orientation="vertical"
     tools:context=".fragments.PageFragment">
 
+    <ImageView
+        android:id="@+id/frg_emo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="6"
+        android:gravity="center_vertical"
+        android:src="@drawable/happy"
+       />
     <TextView
         android:id="@+id/frg_page_title"
         android:layout_width="match_parent"

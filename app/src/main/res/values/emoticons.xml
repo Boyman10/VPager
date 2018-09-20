@@ -6,6 +6,7 @@
         <item>@drawable/sad</item>
         <item>@drawable/crazy</item>
         <item>@drawable/angry</item>
+        <item>@drawable/soso</item>
     </array>
 
 </resources>
