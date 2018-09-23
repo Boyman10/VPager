@@ -14,11 +14,9 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="50" />
-                            <entry key="outputName" value="soso" />
+                            <entry key="outputName" value="ic_toast" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="D:\Downloads\baseline-insert_emoticon-24px.svg" />
-                            <entry key="width" value="50" />
+                            <entry key="sourceFile" value="D:\Downloads\baseline-g_translate-24px.svg" />
                           </map>
                         </option>
                       </PersistentState>

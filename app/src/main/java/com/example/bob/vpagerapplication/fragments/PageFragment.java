@@ -1,30 +1,27 @@
 package com.example.bob.vpagerapplication.fragments;
 
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bob.vpagerapplication.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PageFragment extends Fragment {
+public class PageFragment extends Fragment implements View.OnClickListener{
+
+    private static final String PAGE_FRG_BUNDLE = "Page Fragment BUNDLE";
 
     // Keys for our bundle
     private static final String KEY_POSITION = "position";
@@ -32,6 +29,9 @@ public class PageFragment extends Fragment {
     private static final String KEY_EMO = "emo";
 
     private static TypedArray myEmo;
+
+    private static LayoutInflater inflater;
+
 
     public PageFragment() {
         // Required empty public constructor
@@ -66,6 +66,7 @@ public class PageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+         this.inflater = inflater;
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_page, container, false);
 
@@ -93,10 +94,33 @@ public class PageFragment extends Fragment {
         emoD.draw(canvas);
         emoView.setImageDrawable(emoD);
 */
-emoView.setImageDrawable(myEmo.getDrawable(position));
+        emoView.setImageDrawable(myEmo.getDrawable(position));
+
+
+        emoView.setOnClickListener(this);
 
         Log.d("EMO","The emo in PageFrg is " + myEmo.getDrawable(position).toString());
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+
+        int position = getArguments().getInt(KEY_POSITION,-1);
+
+        Log.d(PAGE_FRG_BUNDLE,"Just clicked on button identified by position ! " + position);
+
+        View layout = inflater.inflate(R.layout.layout_toast,
+                (ViewGroup) v.findViewById(R.id.custom_toast_container));
+
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText("This is a custom toast");
+
+        Toast toast = new Toast(getActivity()); // May be put that within the Activity and not in the fragment ...
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+
+     }
 }
