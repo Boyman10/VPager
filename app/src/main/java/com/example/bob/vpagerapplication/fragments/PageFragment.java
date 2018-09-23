@@ -1,9 +1,17 @@
 package com.example.bob.vpagerapplication.fragments;
 
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +31,8 @@ public class PageFragment extends Fragment {
     private static final String KEY_COLOR = "color";
     private static final String KEY_EMO = "emo";
 
+    private static TypedArray myEmo;
+
     public PageFragment() {
         // Required empty public constructor
     }
@@ -34,7 +44,8 @@ public class PageFragment extends Fragment {
      * @param color
      * @return
      */
-    public static PageFragment newInstance(int position, int color, byte[] emo) {
+   // public static PageFragment newInstance(int position, int color, byte[] emo) {
+     public static PageFragment newInstance(int position, int color, TypedArray emo) {
 
         // Create a new instance
         PageFragment frag = new PageFragment();
@@ -43,8 +54,10 @@ public class PageFragment extends Fragment {
         Bundle args = new Bundle();
         args.putInt(KEY_POSITION, position);
         args.putInt(KEY_COLOR, color);
-        args.putByteArray(KEY_EMO, emo);
+       // args.putByteArray(KEY_EMO, emo);
         frag.setArguments(args);
+
+         myEmo = emo;
 
         return frag;
     }
@@ -69,10 +82,20 @@ public class PageFragment extends Fragment {
         // Update widget:
         rootView.setBackgroundColor(color);
         textView.setText("Page number " + position);
-
+/*
         Bitmap bmp = BitmapFactory.decodeByteArray(emo, 0, emo.length);
+        Bitmap drawableBitmap = bmp.copy(Bitmap.Config.ARGB_8888, true);
 
-        emoView.setImageBitmap(bmp);
+        Canvas canvas = new Canvas(drawableBitmap);
+
+        Drawable emoD = emoView.getDrawable();
+        emoD.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        emoD.draw(canvas);
+        emoView.setImageDrawable(emoD);
+*/
+emoView.setImageDrawable(myEmo.getDrawable(position));
+
+        Log.d("EMO","The emo in PageFrg is " + myEmo.getDrawable(position).toString());
         return view;
     }
 
